@@ -10,8 +10,7 @@
     { "label": "X(Twitter)", "url": "https://x.com/Goryudyuma" },
     { "label": "Blog", "url": "https://063.jp" },
     { "label": "Facebook", "url": "https://www.facebook.com/kei.matsumoto.965/" },
-    { "label": "AtCoder", "url": "https://atcoder.jp/users/goryudyuma" },
-    { "label": "Interview", "url": "https://note.com/finatext/n/n496bd482f432" }
+    { "label": "AtCoder", "url": "https://atcoder.jp/users/goryudyuma" }
   ],
   "projects": [
     {
@@ -26,14 +25,6 @@
       "description": "このポートフォリオ。ビルドなしの静的構成＋Cloudflare Pages。",
       "links": [
         { "label": "Repo", "url": "https://github.com/Goryudyuma/063.jp" }
-      ]
-    },
-    {
-      "title": "location2",
-      "description": "位置情報関連のツール（GitHub公開・PHP、Pages上で公開）。",
-      "links": [
-        { "label": "Site", "url": "https://063.jp/location2/" },
-        { "label": "Repo", "url": "https://github.com/Goryudyuma/location2" }
       ]
     }
   ],
