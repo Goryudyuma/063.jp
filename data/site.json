@@ -51,6 +51,18 @@
       "summary": "GitHub Actions『diff-pr-management』の開発・保守（TypeScript）。PRのフォーマッタ実行結果を差分PRとして自動生成・管理。"
     }
   ],
+  "activities": [
+    { "title": "kstm" },
+    { "title": "ISUCON5", "note": "学生一位！" },
+    { "title": "ISUCON6", "note": "学生一位！" },
+    { "title": "ISUCON7" },
+    { "title": "CODE FESTIVAL 2015" },
+    { "title": "CODE FESTIVAL 2016" },
+    { "title": "SecHack365/セキュリティ・キャンプ 2016" },
+    { "title": "ICTSC6", "note": "三位" },
+    { "title": "ICTSC7" },
+    { "title": "AP 2016 秋" }
+  ],
   "education": [
     { "school": "鳩里小学校", "note": "『きゅうり』って読みます笑" },
     { "school": "白陵中学" },

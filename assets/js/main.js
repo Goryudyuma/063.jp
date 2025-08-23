@@ -84,6 +84,17 @@ window.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
+    // Activities
+    if (Array.isArray(data.activities)) {
+      const actUl = $('#activities-list');
+      data.activities.forEach((a) => {
+        actUl.append(el('li', {}, [
+          el('strong', {}, [a.title || '']),
+          a.note ? el('div', { class: 'muted' }, [a.note]) : ''
+        ]));
+      });
+    }
+
     // Skills
     const skillsUl = $('#skills-list');
     data.skills.forEach((s) => skillsUl.append(el('li', {}, [s])));
