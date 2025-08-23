@@ -12,7 +12,7 @@ a:hover{text-decoration:underline}
 .dark{--bg:#0b1020;--panel:#11172b;--text:#e5e7eb;--muted:#94a3b8;--link:#7dd3fc;--accent:#60a5fa;--border:#1f2937}
 .light{--bg:#ffffff;--panel:#f4f7fb;--text:#0f172a;--muted:#475569;--link:#0369a1;--accent:#2563eb;--border:#e5e7eb}
 
-.container{max-width:880px;margin-inline:auto;padding:24px}
+.container{max-width:1040px;margin-inline:auto;padding:24px}
 .center{min-height:80vh;display:grid;place-items:center;text-align:center}
 .site-header{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .branding{display:flex;align-items:center;gap:16px}
@@ -43,3 +43,19 @@ p{margin:.5rem 0 1rem}
 /* print */
 @media print{.theme-toggle,.skip-link{display:none}}
 
+/* responsive layout tweaks to reduce vertical length */
+@media (min-width: 960px){
+  /* denser project grid on wide screens */
+  #projects .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+  /* show some lists in two columns to shorten page length */
+  #education-list, #residences-list, #activities-list{
+    column-count:2;
+    column-gap:24px;
+  }
+  #education-list li, #residences-list li, #activities-list li{
+    break-inside:avoid;
+    -webkit-column-break-inside:avoid;
+    page-break-inside:avoid;
+  }
+}
