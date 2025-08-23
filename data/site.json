@@ -39,6 +39,13 @@
   ],
   "experience": [
     {
+      "role": "SRE（HRMOS ATS）",
+      "org": "株式会社ビズリーチ",
+      "start": "2018-08",
+      "end": "2021-05",
+      "summary": "HRMOS ATSのSREチームに所属。信頼性向上・運用自動化・パフォーマンス改善などに従事。"
+    },
+    {
       "role": "証券エンジニア（サーバーサイド・インフラ）",
       "org": "株式会社Finatext",
       "start": "2021-06",
@@ -53,6 +60,23 @@
       "summary": "GitHub Actions『diff-pr-management』の開発・保守（TypeScript）。PRのフォーマッタ実行結果を差分PRとして自動生成・管理。"
     }
   ],
+  "education": [
+    { "school": "鳩里小学校", "note": "『きゅうり』って読みます笑" },
+    { "school": "白陵中学" },
+    { "school": "白陵高校", "note": "1年の終わりで中退" },
+    { "school": "神戸セミナー", "note": "予備校／高認取得" },
+    { "school": "信州大学", "note": "情報工学科" },
+    { "school": "信州大学大学院", "note": "2年の9月末中退" }
+  ],
+  "residences": [
+    { "place": "兵庫県多可町", "note": "1歳まで" },
+    { "place": "兵庫県加東市", "note": "4,5歳くらいまで" },
+    { "place": "兵庫県加古川市", "note": "18歳くらいまで" },
+    { "place": "長野県松本市", "note": "学部1年の間" },
+    { "place": "長野県長野市", "note": "学部2年から修士2年の7月まで" },
+    { "place": "東京都世田谷区", "note": "4年半ほど住んだ" },
+    { "place": "北海道札幌市", "note": "現在在住" }
+  ],
   "skills": [
     "Golang",
     "GitHub",
@@ -64,6 +88,7 @@
   ],
   "contact": {
     "email": "k@063.jp",
-    "location": "札幌市"
+    "location": "札幌市",
+    "birthday": "1994/06/03"
   }
 }

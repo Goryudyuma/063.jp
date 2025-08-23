@@ -62,6 +62,28 @@ window.addEventListener('DOMContentLoaded', async () => {
       ]));
     });
 
+    // Education
+    if (Array.isArray(data.education)) {
+      const eduUl = $('#education-list');
+      data.education.forEach((ed) => {
+        eduUl.append(el('li', {}, [
+          el('strong', {}, [ed.school || '']),
+          ed.note ? el('div', { class: 'muted' }, [ed.note]) : ''
+        ]));
+      });
+    }
+
+    // Residences
+    if (Array.isArray(data.residences)) {
+      const resUl = $('#residences-list');
+      data.residences.forEach((r) => {
+        resUl.append(el('li', {}, [
+          el('strong', {}, [r.place || '']),
+          r.note ? el('div', { class: 'muted' }, [r.note]) : ''
+        ]));
+      });
+    }
+
     // Skills
     const skillsUl = $('#skills-list');
     data.skills.forEach((s) => skillsUl.append(el('li', {}, [s])));
@@ -71,6 +93,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     $('#email').href = `mailto:${email}`;
     $('#email').textContent = email;
     $('#location').textContent = data.contact.location ? ` / ${data.contact.location}` : '';
+    $('#birthday').textContent = data.contact.birthday ? ` / ${data.contact.birthday}` : '';
 
     // Footer
     const year = new Date().getFullYear();
@@ -106,4 +129,3 @@ window.addEventListener('DOMContentLoaded', async () => {
     localStorage.setItem('theme', next);
   });
 });
-
