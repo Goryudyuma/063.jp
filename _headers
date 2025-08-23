@@ -7,3 +7,14 @@
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Override long cache for frequently updated assets
+/assets/js/main.js
+  Cache-Control: no-cache
+
+/assets/css/styles.css
+  Cache-Control: no-cache
+
+# Ensure fresh content JSON
+/data/site.json
+  Cache-Control: no-store
