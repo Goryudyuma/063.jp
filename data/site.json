@@ -12,6 +12,13 @@
   ],
   "projects": [
     {
+      "title": "diff-pr-management",
+      "description": "PRのブランチに対してフォーマッタ実行結果の差分を別PRとして管理するGitHub Actions。",
+      "links": [
+        { "label": "Repo", "url": "https://github.com/dev-hato/actions-diff-pr-management" }
+      ]
+    },
+    {
       "title": "063.jp",
       "description": "このポートフォリオ。ビルドなしの静的構成＋Cloudflare Pages。",
       "links": [
@@ -27,10 +34,31 @@
       ]
     }
   ],
-  "experience": [],
-  "skills": [],
+  "experience": [
+    {
+      "role": "OSS コントリビュータ",
+      "org": "dev-hato",
+      "start": "2021",
+      "end": null,
+      "summary": "GitHub Actions『diff-pr-management』の開発・保守（TypeScript）。PRのフォーマッタ実行結果を差分PRとして自動生成・管理。"
+    }
+  ],
+  "skills": [
+    "Go",
+    "TypeScript",
+    "JavaScript",
+    "PHP",
+    "Python",
+    "C++",
+    "Java",
+    "Kotlin",
+    "Ruby",
+    "GitHub Actions",
+    "Shell",
+    "Makefile"
+  ],
   "contact": {
-    "email": "",
+    "email": "k@063.jp",
     "location": "Sapporo"
   }
 }
