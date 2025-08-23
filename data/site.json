@@ -1,0 +1,40 @@
+{
+  "profile": {
+    "name": "Your Name",
+    "tagline": "ソフトウェアエンジニア / ものづくり",
+    "bio": "自己紹介の短いテキスト。興味・強み・今やっていることなどを2〜3文で。",
+    "avatar": "/assets/images/avatar.jpg"
+  },
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/yourname" },
+    { "label": "X(Twitter)", "url": "https://x.com/yourname" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/yourname/" }
+  ],
+  "projects": [
+    {
+      "title": "プロジェクトA",
+      "description": "短い説明。役割や技術、成果など。",
+      "links": [
+        { "label": "Site", "url": "https://example.com" },
+        { "label": "Repo", "url": "https://github.com/yourname/project-a" }
+      ]
+    },
+    {
+      "title": "プロジェクトB",
+      "description": "短い説明。プロダクトの価値や特徴。",
+      "links": [
+        { "label": "Repo", "url": "https://github.com/yourname/project-b" }
+      ]
+    }
+  ],
+  "experience": [
+    { "role": "ソフトウェアエンジニア", "org": "Company", "start": "2021", "end": "2024", "summary": "バックエンド、SRE、フロントなど。" },
+    { "role": "学生", "org": "University", "start": "2017", "end": "2021", "summary": "研究・開発・ハッカソンなど。" }
+  ],
+  "skills": ["Go", "TypeScript", "React", "Cloudflare", "Rust", "Kubernetes"],
+  "contact": {
+    "email": "you@example.com",
+    "location": "Tokyo, Japan"
+  }
+}
+
