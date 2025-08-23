@@ -1,8 +1,8 @@
 {
   "profile": {
     "name": "Goryudyuma (Kei Matsumoto)",
-    "tagline": "", 
-    "bio": "", 
+    "tagline": "ソフトウェアエンジニア（CI/CD・GitHub Actions・Go）", 
+    "bio": "CI/CDと自動化、GitHub Actions、Goなどに関心。ISUCONや各種イベントに参加しつつ、OSSにも貢献しています。", 
     "avatar": "https://avatars.githubusercontent.com/u/6211370?v=4"
   },
   "links": [
@@ -51,11 +51,11 @@
     "Python",
     "C++",
     "Java",
-    "Kotlin",
-    "Ruby",
     "GitHub Actions",
-    "Shell",
-    "Makefile"
+    "AWS",
+    "MySQL",
+    "Elm",
+    "Shell"
   ],
   "contact": {
     "email": "k@063.jp",
