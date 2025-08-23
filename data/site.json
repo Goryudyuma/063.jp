@@ -1,14 +1,17 @@
 {
   "profile": {
-    "name": "Goryudyuma (Kei Matsumoto)",
-    "tagline": "ソフトウェアエンジニア（CI/CD・GitHub Actions・Go）", 
-    "bio": "CI/CDと自動化、GitHub Actions、Goなどに関心。ISUCONや各種イベントに参加しつつ、OSSにも貢献しています。", 
+    "name": "松本 圭威 (Kei Matsumoto / Goryudyuma)",
+    "tagline": "証券エンジニア（サーバーサイド・インフラ）", 
+    "bio": "札幌市在住のフルリモート。年に3〜4回ほど東京に行きます。主戦場はサーバーサイド・インフラで、Go / GitHub / Elm / Terraform、ISUCON・AtCoderなどに取り組んでいます。", 
     "avatar": "https://avatars.githubusercontent.com/u/6211370?v=4"
   },
   "links": [
     { "label": "GitHub", "url": "https://github.com/Goryudyuma" },
     { "label": "X(Twitter)", "url": "https://x.com/Goryudyuma" },
-    { "label": "Blog", "url": "https://063.jp" }
+    { "label": "Blog", "url": "https://063.jp" },
+    { "label": "Facebook", "url": "https://www.facebook.com/kei.matsumoto.965/" },
+    { "label": "AtCoder", "url": "https://atcoder.jp/users/goryudyuma" },
+    { "label": "Interview", "url": "https://note.com/finatext/n/n496bd482f432" }
   ],
   "projects": [
     {
@@ -36,6 +39,13 @@
   ],
   "experience": [
     {
+      "role": "証券エンジニア（サーバーサイド・インフラ）",
+      "org": "株式会社Finatext",
+      "start": "2021-06",
+      "end": null,
+      "summary": "フルリモート（札幌）。証券領域のサーバーサイドおよびインフラを担当。"
+    },
+    {
       "role": "OSS コントリビュータ",
       "org": "dev-hato",
       "start": "2021",
@@ -44,21 +54,16 @@
     }
   ],
   "skills": [
-    "Go",
-    "TypeScript",
-    "JavaScript",
-    "PHP",
-    "Python",
-    "C++",
-    "Java",
-    "GitHub Actions",
-    "AWS",
-    "MySQL",
+    "Golang",
+    "GitHub",
     "Elm",
-    "Shell"
+    "ISUCON",
+    "AtCoder",
+    "GitHub Actions",
+    "Terraform"
   ],
   "contact": {
     "email": "k@063.jp",
-    "location": "Sapporo"
+    "location": "札幌市"
   }
 }
