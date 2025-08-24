@@ -34,6 +34,12 @@ window.addEventListener('DOMContentLoaded', async () => {
       const a = el('a', { href: l.url, target: '_blank', rel: 'noopener noreferrer' }, [l.label]);
       linksUl.append(el('li', {}, [a]));
     });
+    // Profile meta (location, birthday)
+    const metaParts = [];
+    if (data.profile.location) metaParts.push(data.profile.location);
+    if (data.profile.birthday) metaParts.push(data.profile.birthday);
+    const metaEl = $('#profile-meta');
+    if (metaEl) metaEl.textContent = metaParts.join(' / ');
 
     // Projects
     const projects = $('#project-list');
@@ -103,8 +109,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const email = data.contact.email;
     $('#email').href = `mailto:${email}`;
     $('#email').textContent = email;
-    $('#location').textContent = data.contact.location ? ` / ${data.contact.location}` : '';
-    $('#birthday').textContent = data.contact.birthday ? ` / ${data.contact.birthday}` : '';
+    // location/birthday moved under profile and rendered in About
 
     // Footer
     const year = new Date().getFullYear();

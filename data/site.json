@@ -3,7 +3,9 @@
     "name": "松本 圭威 (Kei Matsumoto / Goryudyuma)",
     "tagline": "証券エンジニア（サーバーサイド・インフラ）", 
     "bio": "札幌市在住のフルリモート。年に3〜4回ほど東京に行きます。主戦場はサーバーサイド・インフラで、Go / GitHub / Elm / Terraform、ISUCON・AtCoderなどに取り組んでいます。", 
-    "avatar": "https://avatars.githubusercontent.com/u/6211370?v=4"
+    "avatar": "https://avatars.githubusercontent.com/u/6211370?v=4",
+    "location": "札幌市",
+    "birthday": "1994/06/03"
   },
   "links": [
     { "label": "GitHub", "url": "https://github.com/Goryudyuma" },
@@ -90,8 +92,6 @@
     "Terraform"
   ],
   "contact": {
-    "email": "k@063.jp",
-    "location": "札幌市",
-    "birthday": "1994/06/03"
+    "email": "k@063.jp"
   }
 }
