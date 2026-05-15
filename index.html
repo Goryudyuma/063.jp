@@ -3,151 +3,172 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>063.jp — Recruiting Edition</title>
-    <meta name="description" content="063 CREATIVE — フルリモートで攻める証券エンジニア。採用サイト風ポートフォリオ" />
+    <title>063.jp | Kei Matsumoto</title>
+    <meta
+      name="description"
+      content="松本圭威のポートフォリオ。サーバーサイド・インフラを軸に、Go、GitHub、Terraform、GitHub Actions などに取り組んでいます。"
+    />
     <link rel="canonical" href="https://063.jp/" />
     <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/assets/images/favicon.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="theme-color" content="#05071a" />
+    <meta name="theme-color" content="#f5efe6" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="063 CREATIVE — Recruiting" />
-    <meta property="og:description" content="最先端の証券エンジニアリングを推進するリモートチーム" />
+    <meta property="og:title" content="063.jp | Kei Matsumoto" />
+    <meta
+      property="og:description"
+      content="松本圭威のポートフォリオ。サーバーサイド・インフラ、OSS、競技プログラミング、ISUCON。"
+    />
     <meta property="og:url" content="https://063.jp/" />
     <meta property="og:image" content="https://063.jp/assets/images/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="preload" href="/assets/css/styles.css?v=3" as="style" />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=3" />
+    <link rel="preload" href="/assets/css/styles.css?v=4" as="style" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=4" />
   </head>
   <body>
     <a href="#main" class="skip-link">本文へスキップ</a>
-    <div class="background-grid" aria-hidden="true"></div>
-    <div class="glow glow-one" aria-hidden="true"></div>
-    <div class="glow glow-two" aria-hidden="true"></div>
 
-    <header class="hero" id="hero">
-      <nav class="nav container" aria-label="メインナビゲーション">
-        <div class="logo">063 CREATIVE</div>
-        <div class="nav-links">
-          <a href="#about">Manifesto</a>
-          <a href="#projects">Projects</a>
+    <header class="site-header">
+      <nav class="topbar container" aria-label="メインナビゲーション">
+        <a class="brand" href="#hero">063.jp</a>
+        <div class="topbar-nav">
+          <a href="#projects">Works</a>
           <a href="#experience">Career</a>
+          <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
-        <button id="themeToggle" class="theme-toggle" aria-label="テーマ切り替え">🌓</button>
+        <button id="themeToggle" class="theme-toggle" aria-label="テーマ切り替え">Theme</button>
       </nav>
-      <div class="hero-content container">
-        <div class="hero-text">
-          <p class="eyebrow">LIVE PROFILE</p>
-          <h1 id="name">Your Name</h1>
-          <p id="tagline" class="hero-tagline">やりたいこと、肩書きなど</p>
-          <div id="profile-meta" class="hero-meta">札幌市 / 1994/06/03</div>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Contact</a>
-            <a class="btn btn-ghost" href="#projects">View projects</a>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <div class="hero-avatar">
-            <img id="avatar" src="/assets/images/avatar.jpg" alt="プロフィール画像" width="220" height="220" />
-            <span class="badge">Remote / JP</span>
-          </div>
-          <div class="hero-card">
-            <p class="hero-card-title">LINK UP</p>
-            <ul id="links" class="social-links" aria-label="リンク"></ul>
-          </div>
-        </div>
-      </div>
     </header>
 
     <main id="main">
-      <section class="section container metrics" aria-label="ハイライト">
-        <div class="section-heading">
-          <p class="eyebrow">SIGNAL BOARD</p>
-          <h2>Key signals behind this portfolio</h2>
-        </div>
-        <div id="metrics" class="metric-grid"></div>
-      </section>
+      <section id="hero" class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Personal portfolio</p>
+            <h1 id="name">Your Name</h1>
+            <p id="tagline" class="hero-tagline">やりたいこと、肩書きなど</p>
+            <p id="bio" class="hero-bio">自己紹介テキストがここに入ります。</p>
+            <div id="profile-meta" class="hero-meta"></div>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">Projects</a>
+              <a class="btn btn-secondary" href="#contact">Contact</a>
+            </div>
+          </div>
 
-      <section id="about" class="section container manifesto" aria-labelledby="manifesto-title">
-        <div class="section-heading">
-          <p class="eyebrow">MANIFESTO</p>
-          <h2 id="manifesto-title">プロダクトも組織も、攻めの姿勢で磨き抜く</h2>
+          <aside class="hero-aside">
+            <section class="profile-card" aria-label="プロフィール概要">
+              <div class="profile-card-head">
+                <img
+                  id="avatar"
+                  src="/assets/images/avatar.jpg"
+                  alt="プロフィール画像"
+                  width="160"
+                  height="160"
+                />
+                <div class="profile-card-copy">
+                  <p id="profile-kicker" class="profile-kicker">Based in Sapporo</p>
+                  <p id="profile-caption" class="profile-caption">
+                    Server-side / Infrastructure / OSS
+                  </p>
+                </div>
+              </div>
+              <ul id="links" class="link-pills" aria-label="リンク"></ul>
+            </section>
+
+            <section id="highlight-list" class="highlight-list" aria-label="ハイライト"></section>
+          </aside>
         </div>
-        <p id="bio" class="lead">自己紹介テキストがここに入ります。</p>
+
+        <div class="ticker" aria-hidden="true">
+          <div id="skill-marquee" class="ticker-track"></div>
+        </div>
       </section>
 
       <section id="projects" class="section container" aria-labelledby="projects-title">
         <div class="section-heading">
-          <p class="eyebrow">WORK SHOWCASE</p>
-          <h2 id="projects-title">Launch-ready projects & tooling</h2>
+          <p class="eyebrow">Selected works</p>
+          <h2 id="projects-title">公開しているものと、継続して触っているもの</h2>
         </div>
         <div id="project-list" class="project-grid"></div>
       </section>
 
       <section id="experience" class="section container" aria-labelledby="experience-title">
         <div class="section-heading">
-          <p class="eyebrow">CAREER SPRINT</p>
-          <h2 id="experience-title">Experience that scales</h2>
+          <p class="eyebrow">Career</p>
+          <h2 id="experience-title">仕事として積み上げてきたこと</h2>
         </div>
-        <ul id="experience-list" class="timeline"></ul>
+        <ul id="experience-list" class="career-list"></ul>
       </section>
 
-      <section class="section container" aria-label="カルチャー">
-        <div class="culture-grid">
-          <div class="panel">
-            <div class="section-heading">
-              <p class="eyebrow">ACTIVITIES</p>
-              <h3>チームカルチャーと挑戦歴</h3>
-            </div>
-            <ul id="activities-list" class="badge-list"></ul>
+      <section
+        id="profile-details"
+        class="section container story-grid"
+        aria-label="補足プロフィール"
+      >
+        <section class="info-panel" aria-labelledby="activities-title">
+          <div class="section-heading compact">
+            <p class="eyebrow">Activities</p>
+            <h3 id="activities-title">競技・イベント・寄り道</h3>
           </div>
-          <div class="panel">
-            <div class="section-heading">
-              <p class="eyebrow">EDUCATION</p>
-              <h3>学びのバックボーン</h3>
-            </div>
-            <ul id="education-list" class="badge-list"></ul>
+          <ul id="activities-list" class="stacked-list"></ul>
+        </section>
+
+        <section class="info-panel" aria-labelledby="education-title">
+          <div class="section-heading compact">
+            <p class="eyebrow">Education</p>
+            <h3 id="education-title">学歴</h3>
           </div>
-          <div class="panel">
-            <div class="section-heading">
-              <p class="eyebrow">BASES</p>
-              <h3>これまでの拠点</h3>
-            </div>
-            <ul id="residences-list" class="badge-list"></ul>
+          <ul id="education-list" class="stacked-list"></ul>
+        </section>
+
+        <section class="info-panel" aria-labelledby="residences-title">
+          <div class="section-heading compact">
+            <p class="eyebrow">Residences</p>
+            <h3 id="residences-title">住んできた場所</h3>
           </div>
-        </div>
+          <ul id="residences-list" class="stacked-list"></ul>
+        </section>
       </section>
 
-      <section class="section container" aria-labelledby="skills-title">
+      <section id="skills" class="section container" aria-labelledby="skills-title">
         <div class="section-heading">
-          <p class="eyebrow">STACK</p>
-          <h2 id="skills-title">Favorite weapons</h2>
+          <p class="eyebrow">Skills</p>
+          <h2 id="skills-title">普段よく使うもの</h2>
         </div>
-        <ul id="skills-list" class="tag-cloud"></ul>
+        <ul id="skills-list" class="skill-cloud"></ul>
       </section>
 
-      <section id="contact" class="section container contact" aria-labelledby="contact-title">
-        <div class="section-heading">
-          <p class="eyebrow">CONTACT</p>
-          <h2 id="contact-title">Let’s connect</h2>
+      <section id="contact" class="section container" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">連絡先</h2>
+            <p class="contact-copy">
+              お仕事の相談、技術の話、カジュアルな情報交換まで。メールでどうぞ。
+            </p>
+          </div>
+          <a id="email" class="btn btn-primary" href="#">メール</a>
         </div>
-        <p>お仕事の相談やカジュアルな情報交換など、お気軽にご連絡ください。</p>
-        <a id="email" class="btn btn-primary" href="#">メール</a>
       </section>
     </main>
 
     <footer class="site-footer container">
-      <small>© <span id="copyright-year"></span> <span id="copyright-name">Your Name</span>. Built for the bold.</small>
+      <small>
+        © <span id="copyright-year"></span> <span id="copyright-name">Your Name</span>.
+      </small>
     </footer>
 
-    <script src="/assets/js/main.js?v=3" defer></script>
+    <script src="/assets/js/main.js?v=4" defer></script>
   </body>
 </html>

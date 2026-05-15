@@ -17,6 +17,7 @@
   "projects": [
     {
       "title": "diff-pr-management",
+      "url": "https://github.com/dev-hato/actions-diff-pr-management",
       "description": "PRのブランチに対してフォーマッタ実行結果の差分を別PRとして管理するGitHub Actions。",
       "links": [
         { "label": "Repo", "url": "https://github.com/dev-hato/actions-diff-pr-management" }
@@ -24,6 +25,7 @@
     },
     {
       "title": "063.jp",
+      "url": "https://063.jp/",
       "description": "このポートフォリオ。ビルドなしの静的構成＋Cloudflare Pages。",
       "links": [
         { "label": "Repo", "url": "https://github.com/Goryudyuma/063.jp" }
@@ -34,6 +36,7 @@
     {
       "role": "SRE（HRMOS ATS）",
       "org": "株式会社ビズリーチ",
+      "orgUrl": "https://www.bizreach.co.jp/",
       "start": "2018-08",
       "end": "2021-05",
       "summary": "HRMOS ATSのSREチームに所属。信頼性向上・運用自動化・パフォーマンス改善などに従事。"
@@ -41,6 +44,7 @@
     {
       "role": "証券エンジニア（サーバーサイド・インフラ）",
       "org": "株式会社Finatext",
+      "orgUrl": "https://finatext.com/",
       "start": "2021-06",
       "end": null,
       "summary": "フルリモート（札幌）。証券領域のサーバーサイドおよびインフラを担当。"
@@ -48,6 +52,7 @@
     {
       "role": "OSS コントリビュータ",
       "org": "dev-hato",
+      "orgUrl": "https://github.com/dev-hato",
       "start": "2021",
       "end": null,
       "summary": "GitHub Actions『diff-pr-management』の開発・保守（TypeScript）。PRのフォーマッタ実行結果を差分PRとして自動生成・管理。"
@@ -56,23 +61,23 @@
   "activities": [
     { "title": "JR完乗", "note": "乗りつぶしオンライン基準" },
     { "title": "kstm", "note": "信州大学のサークル" },
-    { "title": "ISUCON5" },
-    { "title": "ISUCON6", "note": "学生一位！" },
-    { "title": "ISUCON7" },
+    { "title": "ISUCON5", "url": "https://isucon.net/" },
+    { "title": "ISUCON6", "note": "学生一位！", "url": "https://isucon.net/" },
+    { "title": "ISUCON7", "url": "https://isucon.net/" },
     { "title": "CODE FESTIVAL 2015" },
     { "title": "CODE FESTIVAL 2016" },
-    { "title": "セキュリティ・キャンプ 2016", "note": "参加" },
-    { "title": "ICTSC6", "note": "三位" },
-    { "title": "ICTSC7" },
-    { "title": "AP 2016 秋", "note": "応用情報" }
+    { "title": "セキュリティ・キャンプ 2016", "note": "参加", "url": "https://www.security-camp.or.jp/camp/" },
+    { "title": "ICTSC6", "note": "三位", "url": "https://icttoracon.net/about-ictsc" },
+    { "title": "ICTSC7", "url": "https://icttoracon.net/about-ictsc" },
+    { "title": "AP 2016 秋", "note": "応用情報", "url": "https://www.ipa.go.jp/shiken/kubun/ap.html" }
   ],
   "education": [
-    { "school": "鳩里小学校", "note": "『きゅうり』って読みます笑" },
-    { "school": "白陵中学" },
-    { "school": "白陵高校", "note": "1年の終わりで中退" },
-    { "school": "神戸セミナー", "note": "予備校／高認取得" },
-    { "school": "信州大学", "note": "情報工学科" },
-    { "school": "信州大学大学院", "note": "2年の9月末中退" }
+    { "school": "鳩里小学校", "note": "『きゅうり』って読みます笑", "url": "https://www.city.kakogawa.lg.jp/soshikikarasagasu/kyouiku/gakoen/kakogawachugakkoku/kyuurishogakko/gakkojoho/1414501215995.html" },
+    { "school": "白陵中学", "url": "https://www.hakuryo.ed.jp/" },
+    { "school": "白陵高校", "note": "1年の終わりで中退", "url": "https://www.hakuryo.ed.jp/" },
+    { "school": "神戸セミナー", "note": "予備校／高認取得", "url": "https://www.kobeseminar.ac.jp/" },
+    { "school": "信州大学", "note": "情報工学科", "url": "https://www.shinshu-u.ac.jp/" },
+    { "school": "信州大学大学院", "note": "2年の9月末中退", "url": "https://www.shinshu-u.ac.jp/graduate/research/" }
   ],
   "residences": [
     { "place": "兵庫県多可町", "note": "1歳まで" },

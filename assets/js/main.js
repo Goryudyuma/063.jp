@@ -1,222 +1,277 @@
 (() => {
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const saved = localStorage.getItem('theme');
-  const theme = saved || (prefersDark ? 'dark' : 'light');
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const saved = localStorage.getItem("theme");
+  const theme = saved || (prefersDark ? "dark" : "light");
   document.documentElement.classList.add(theme);
 })();
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener("DOMContentLoaded", async () => {
   const $ = (sel) => document.querySelector(sel);
   const el = (tag, attrs = {}, children = []) => {
-    const e = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) {
-      if (k === 'class') e.className = v;
-      else if (k === 'html') e.innerHTML = v;
-      else e.setAttribute(k, v);
+    const node = document.createElement(tag);
+    Object.entries(attrs).forEach(([key, value]) => {
+      if (key === "class") node.className = value;
+      else node.setAttribute(key, value);
+    });
+    children.forEach((child) => node.append(child));
+    return node;
+  };
+  const clear = (node) => node && node.replaceChildren();
+  const externalLink = (url, text, className = "linked-text") =>
+    el(
+      "a",
+      { href: url, target: "_blank", rel: "noopener noreferrer", class: className },
+      [text]
+    );
+
+  const renderName = (node, text = "") => {
+    if (!node) return;
+    clear(node);
+    const match = text.match(/^(.*?)\s*(\(.+\))$/);
+    if (!match) {
+      node.textContent = text;
+      return;
     }
-    for (const c of children) e.append(c);
-    return e;
+    node.append(document.createTextNode(match[1].trim()));
+    node.append(el("span", { class: "name-sub" }, [match[2]]));
+  };
+
+  const renderMeta = (node, values = []) => {
+    if (!node) return;
+    clear(node);
+    values
+      .filter(Boolean)
+      .forEach((value) => node.append(el("span", { class: "meta-chip" }, [value])));
+  };
+
+  const renderLinks = (node, links = []) => {
+    if (!node) return;
+    clear(node);
+    links.forEach((link) => {
+      const anchor = el(
+        "a",
+        { href: link.url, target: "_blank", rel: "noopener noreferrer" },
+        [link.label]
+      );
+      node.append(el("li", {}, [anchor]));
+    });
+  };
+
+  const renderHighlights = (node, data) => {
+    if (!node) return;
+    clear(node);
+    const experiences = Array.isArray(data.experience) ? data.experience : [];
+    const currentRole = experiences.find((item) => !item.end) || experiences[experiences.length - 1];
+    const recentActivity = Array.isArray(data.activities) ? data.activities[0] : null;
+    const skills = Array.isArray(data.skills) ? data.skills : [];
+    const highlightItems = [
+      currentRole
+        ? {
+            label: "Current role",
+            value: currentRole.role,
+            note: currentRole.org
+          }
+        : null,
+      recentActivity
+        ? {
+            label: "Recent topic",
+            value: recentActivity.title,
+            note: recentActivity.note || "最近のトピック"
+          }
+        : null,
+      skills.length
+        ? {
+            label: "Usual tools",
+            value: skills.slice(0, 4).join(" / "),
+            note: "よく触るもの"
+          }
+        : null
+    ].filter(Boolean);
+
+    highlightItems.forEach((item) => {
+      node.append(
+        el("article", { class: "highlight-card" }, [
+          el("p", { class: "highlight-label" }, [item.label]),
+          el("p", { class: "highlight-value" }, [item.value]),
+          el("p", { class: "highlight-note" }, [item.note])
+        ])
+      );
+    });
+  };
+
+  const renderTicker = (node, data) => {
+    if (!node) return;
+    clear(node);
+    const skills = Array.isArray(data.skills) ? data.skills : [];
+    const activities = Array.isArray(data.activities) ? data.activities.slice(0, 4).map((item) => item.title) : [];
+    const items = [...skills, ...activities];
+    const repeated = [...items, ...items, ...items];
+    repeated.forEach((item) => {
+      node.append(el("span", { class: "ticker-item" }, [item]));
+    });
+  };
+
+  const renderProjects = (node, projects = []) => {
+    if (!node) return;
+    clear(node);
+    const projectPalettes = [
+      ["rgba(216, 92, 43, 0.22)", "rgba(14, 93, 100, 0.14)"],
+      ["rgba(14, 93, 100, 0.2)", "rgba(216, 92, 43, 0.12)"],
+      ["rgba(232, 129, 43, 0.18)", "rgba(47, 124, 132, 0.14)"],
+      ["rgba(173, 95, 58, 0.18)", "rgba(18, 92, 96, 0.12)"]
+    ];
+    projects.forEach((project, index) => {
+      const [glowA, glowB] = projectPalettes[index % projectPalettes.length];
+      const links = el("div", { class: "project-card-links" });
+      (project.links || []).forEach((link) => {
+        links.append(
+          el(
+            "a",
+            { href: link.url, target: "_blank", rel: "noopener noreferrer" },
+            [link.label]
+          )
+        );
+      });
+      node.append(
+        el(
+          "article",
+          {
+            class: "project-card",
+            style: `--project-glow-a: ${glowA}; --project-glow-b: ${glowB};`
+          },
+          [
+          el("p", { class: "project-index" }, [`Project ${String(index + 1).padStart(2, "0")}`]),
+          el("h3", {}, [
+            project.url || project.links?.[0]?.url
+              ? externalLink(project.url || project.links[0].url, project.title, "project-title-link")
+              : project.title
+          ]),
+          el("p", { class: "muted" }, [project.description]),
+          links
+          ]
+        )
+      );
+    });
+  };
+
+  const renderExperience = (node, items = []) => {
+    if (!node) return;
+    clear(node);
+    items.forEach((item) => {
+      node.append(
+        el("li", {}, [
+          el("div", { class: "career-period" }, [`${item.start} - ${item.end || "現在"}`]),
+          el("div", { class: "career-body" }, [
+            el("strong", { class: "career-role" }, [item.role]),
+            el("div", { class: "career-org" }, [
+              item.orgUrl ? externalLink(item.orgUrl, item.org) : item.org
+            ]),
+            el("div", { class: "career-summary" }, [item.summary])
+          ])
+        ])
+      );
+    });
+  };
+
+  const renderSimpleList = (node, items = [], titleKey, noteKey) => {
+    if (!node) return;
+    clear(node);
+    items.forEach((item) => {
+      const title = item[titleKey] || "";
+      const children = [
+        el("strong", {}, [item.url ? externalLink(item.url, title) : title])
+      ];
+      if (item[noteKey]) {
+        children.push(el("div", { class: "muted" }, [item[noteKey]]));
+      }
+      node.append(el("li", {}, children));
+    });
   };
 
   try {
-    const res = await fetch('/data/site.json', { cache: 'no-store' });
+    const res = await fetch("/data/site.json", { cache: "no-store" });
     const data = await res.json();
 
-    // Header
-    const nameEl = $('#name');
-    if (nameEl) {
-      const nameText = data.profile.name || '';
-      const match = nameText.match(/^(.*?)\s*(\(.+\))$/);
-      if (match) {
-        nameEl.innerHTML = `${match[1]} <span class="name-alt">${match[2]}</span>`;
-      } else {
-        nameEl.textContent = nameText;
-      }
-    }
-    $('#tagline').textContent = data.profile.tagline;
-    $('#avatar').src = data.profile.avatar || '/assets/images/avatar.jpg';
-    $('#avatar').alt = `${data.profile.name}のプロフィール画像`;
+    renderName($("#name"), data.profile.name || "");
+    const taglineEl = $("#tagline");
+    if (taglineEl) taglineEl.textContent = data.profile.tagline || "";
+    const bioEl = $("#bio");
+    if (bioEl) bioEl.textContent = data.profile.bio || "";
 
-    // About
-    const bioEl = $('#bio');
-    if (bioEl) bioEl.textContent = data.profile.bio;
-    const linksUl = $('#links');
-    if (linksUl) {
-      data.links.forEach((l) => {
-        const a = el('a', { href: l.url, target: '_blank', rel: 'noopener noreferrer' }, [l.label]);
-        linksUl.append(el('li', {}, [a]));
-      });
-    }
-    // Profile meta (location, birthday)
-    const metaParts = [];
-    if (data.profile.location) metaParts.push(data.profile.location);
-    if (data.profile.birthday) metaParts.push(data.profile.birthday);
-    const metaEl = $('#profile-meta');
-    if (metaEl) metaEl.textContent = metaParts.join(' / ');
-
-    // Metrics
-    const metrics = $('#metrics');
-    if (metrics) {
-      const experiences = Array.isArray(data.experience) ? data.experience : [];
-      const currentRole = experiences.find((exp) => !exp.end) || experiences[experiences.length - 1];
-      const leadProject = data.projects?.[0];
-      const skills = Array.isArray(data.skills) ? data.skills : [];
-      const skillSnippet = skills.slice(0, 3).join(' / ') + (skills.length > 3 ? ' +' : '');
-      const headlineActivity = data.activities?.[0];
-      const cards = [
-        data.profile.location
-          ? { label: 'REMOTE BASE', value: data.profile.location, note: 'フルリモートで稼働' }
-          : null,
-        currentRole
-          ? { label: 'CURRENT ROLE', value: currentRole.role, note: currentRole.org }
-          : null,
-        leadProject
-          ? { label: 'SIGNATURE BUILD', value: leadProject.title, note: leadProject.description }
-          : null,
-        skills.length
-          ? { label: 'CORE STACK', value: skillSnippet, note: '主要ツールの抜粋' }
-          : null,
-        headlineActivity
-          ? {
-              label: 'LATEST CHALLENGE',
-              value: headlineActivity.title,
-              note: headlineActivity.note || '最近取り組んだトピック'
-            }
-          : null
-      ].filter(Boolean);
-
-      cards.forEach((card) => {
-        const children = [
-          el('p', { class: 'metric-label' }, [card.label]),
-          el('p', { class: 'metric-value' }, [card.value])
-        ];
-        if (card.note) {
-          children.push(el('p', { class: 'metric-note' }, [card.note]));
-        }
-        metrics.append(el('article', { class: 'metric-card' }, children));
-      });
+    const avatarEl = $("#avatar");
+    if (avatarEl) {
+      avatarEl.src = data.profile.avatar || "/assets/images/avatar.jpg";
+      avatarEl.alt = `${data.profile.name}のプロフィール画像`;
     }
 
-    // Projects
-    const projects = $('#project-list');
-    if (projects) {
-      data.projects.forEach((p) => {
-        const linksRow = el('div', { class: 'project-card-links' });
-        (p.links || []).forEach((link) => {
-          linksRow.append(
-            el(
-              'a',
-              { href: link.url, target: '_blank', rel: 'noopener noreferrer' },
-              [link.label]
-            )
-          );
-        });
-        const card = el('article', { class: 'project-card' }, [
-          el('h3', {}, [p.title]),
-          el('p', { class: 'muted' }, [p.description]),
-          linksRow
-        ]);
-        projects.append(card);
-      });
+    renderMeta($("#profile-meta"), [
+      data.profile.location ? `${data.profile.location}在住` : "",
+      data.profile.birthday ? `${data.profile.birthday} 生まれ` : ""
+    ]);
+
+    const profileKicker = $("#profile-kicker");
+    if (profileKicker) {
+      profileKicker.textContent = data.profile.location
+        ? `${data.profile.location} / Remote`
+        : "Based in Japan";
     }
 
-    // Experience
-    const expUl = $('#experience-list');
-    if (expUl) {
-      data.experience.forEach((e) => {
-        expUl.append(el('li', {}, [
-          el('strong', {}, [`${e.role} — ${e.org}`]),
-          el('div', { class: 'muted' }, [`${e.start} – ${e.end || '現在'}`]),
-          el('div', {}, [e.summary])
-        ]));
-      });
+    const profileCaption = $("#profile-caption");
+    if (profileCaption) {
+      const caption = Array.isArray(data.skills) ? data.skills.slice(0, 4).join(" / ") : "";
+      profileCaption.textContent = caption || data.profile.tagline || "";
     }
 
-    // Education
-    if (Array.isArray(data.education)) {
-      const eduUl = $('#education-list');
-      if (eduUl) {
-        data.education.forEach((ed) => {
-          eduUl.append(el('li', {}, [
-            el('strong', {}, [ed.school || '']),
-            ed.note ? el('div', { class: 'muted' }, [ed.note]) : ''
-          ]));
-        });
-      }
+    renderLinks($("#links"), data.links || []);
+    renderHighlights($("#highlight-list"), data);
+    renderTicker($("#skill-marquee"), data);
+    renderProjects($("#project-list"), data.projects || []);
+    renderExperience($("#experience-list"), data.experience || []);
+    renderSimpleList($("#activities-list"), data.activities || [], "title", "note");
+    renderSimpleList($("#education-list"), data.education || [], "school", "note");
+    renderSimpleList($("#residences-list"), data.residences || [], "place", "note");
+
+    const skillsEl = $("#skills-list");
+    if (skillsEl) {
+      clear(skillsEl);
+      (data.skills || []).forEach((skill) => skillsEl.append(el("li", {}, [skill])));
     }
 
-    // Residences
-    if (Array.isArray(data.residences)) {
-      const resUl = $('#residences-list');
-      if (resUl) {
-        data.residences.forEach((r) => {
-          resUl.append(el('li', {}, [
-            el('strong', {}, [r.place || '']),
-            r.note ? el('div', { class: 'muted' }, [r.note]) : ''
-          ]));
-        });
-      }
+    const emailEl = $("#email");
+    if (emailEl) {
+      emailEl.href = `mailto:${data.contact.email}`;
+      emailEl.textContent = data.contact.email;
     }
 
-    // Activities
-    if (Array.isArray(data.activities)) {
-      const actUl = $('#activities-list');
-      if (actUl) {
-        data.activities.forEach((a) => {
-          actUl.append(el('li', {}, [
-            el('strong', {}, [a.title || '']),
-            a.note ? el('div', { class: 'muted' }, [a.note]) : ''
-          ]));
-        });
-      }
-    }
+    const yearEl = $("#copyright-year");
+    if (yearEl) yearEl.textContent = `${new Date().getFullYear()}`;
+    const copyrightName = $("#copyright-name");
+    if (copyrightName) copyrightName.textContent = data.profile.name;
 
-    // Skills
-    const skillsUl = $('#skills-list');
-    if (skillsUl) {
-      data.skills.forEach((s) => skillsUl.append(el('li', {}, [s])));
-    }
-
-    // Contact
-    const email = data.contact.email;
-    const emailLink = $('#email');
-    if (emailLink) {
-      emailLink.href = `mailto:${email}`;
-      emailLink.textContent = email;
-    }
-    // location/birthday moved under profile and rendered in About
-
-    // Footer
-    const year = new Date().getFullYear();
-    document.getElementById('copyright-year').textContent = year;
-    document.getElementById('copyright-name').textContent = data.profile.name;
-
-    // JSON-LD
     const ld = {
-      '@context': 'https://schema.org',
-      '@type': 'Person',
+      "@context": "https://schema.org",
+      "@type": "Person",
       name: data.profile.name,
-      url: 'https://063.jp/',
+      url: "https://063.jp/",
       image: data.profile.avatar,
       jobTitle: data.profile.tagline,
-      sameAs: data.links.map((l) => l.url)
+      sameAs: (data.links || []).map((item) => item.url)
     };
-    const s = document.createElement('script');
-    s.type = 'application/ld+json';
-    s.text = JSON.stringify(ld);
-    document.head.appendChild(s);
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify(ld);
+    document.head.appendChild(script);
   } catch (err) {
-    console.error('Failed to load site.json', err);
+    console.error("Failed to load site.json", err);
   }
 
-  // Theme toggle
-  const toggle = document.getElementById('themeToggle');
-  toggle?.addEventListener('click', () => {
+  const toggle = $("#themeToggle");
+  toggle?.addEventListener("click", () => {
     const root = document.documentElement;
-    const cur = root.classList.contains('dark') ? 'dark' : 'light';
-    const next = cur === 'dark' ? 'light' : 'dark';
-    root.classList.remove(cur);
+    const current = root.classList.contains("dark") ? "dark" : "light";
+    const next = current === "dark" ? "light" : "dark";
+    root.classList.remove(current);
     root.classList.add(next);
-    localStorage.setItem('theme', next);
+    localStorage.setItem("theme", next);
   });
 });
