@@ -1,32 +1,72 @@
-# 063.jp — Portfolio Site
+# 063.jp
 
-Static, no-build portfolio site designed for long-term maintainability and hosted on Cloudflare Pages.
+松本 圭威（Kei Matsumoto / Goryudyuma）のポートフォリオサイトです。HTML・CSS・JavaScript と Node.js の標準機能だけで構成しています。フレームワーク、外部パッケージ、`npm install` は不要です。
 
-## Edit Content
-- Update `data/site.json` to change profile, links, projects, and texts.
-- Images live under `assets/images/`. Replace `avatar.jpg` as needed.
+掲載内容から生成した `index.html` をリポジトリに含めているため、公開時のビルドは不要です。プロフィールや経歴は最初から HTML に含まれ、JavaScript を無効にしたブラウザでも読めます。
 
-## Local Preview
-Open `index.html` directly in a browser or use a static server:
+## ローカルで開く
 
-- Python: `python3 -m http.server 8080`
-- Go: `go run std/http` (or any static server)
+Node.js 24 以降を使用してください。
 
-## Deploy to Cloudflare Pages
-- Project: connect this repo to Cloudflare Pages.
-- Build command: none
-- Build output directory: `/` (project root)
-- Set custom domain to `063.jp` in Cloudflare and enable HTTPS.
+```sh
+npm run dev
+```
 
-## Optional
-- Enable Cloudflare Web Analytics by uncommenting the snippet in `index.html` and setting your token.
+起動時に HTML を生成し、<http://127.0.0.1:8080> でプレビューします。ポートを変える場合は `PORT=8081 npm run dev` を使用します。サーバーは自分の端末だけから接続できるようにしています。
 
-## Structure
-- `index.html` — single-page shell
-- `404.html` — custom not found page
-- `assets/` — CSS, JS, images
-- `data/site.json` — all editable content
-- `_headers`, `_redirects` — security headers and route rules
+CSS・JavaScript を編集した後はブラウザを更新してください。掲載内容やテンプレートを編集した後は、別のターミナルで `npm run build` を実行してから更新するか、プレビューサーバーを再起動してください。ファイルの自動監視は行いません。
 
-## License
-Content is yours; code is unlicensed by default. Add a license if desired.
+## 内容・デザインの編集
+
+1. 掲載内容は `data/site.json`、ページ構造は `src/index.html`、見た目は `assets/css/styles.css` を編集します。
+2. `npm run build` を実行して `index.html` を生成します。
+3. `npm run check` とブラウザで確認します。
+4. 編集したファイルと生成済みの `index.html` を一緒にコミットします。
+
+`index.html` の直接編集は次の生成で上書きされます。`src/index.html` の `{{displayName}}` のようなトークンが、検証済み・エスケープ済みの内容に置き換わります。新しいデータ項目やトークンを追加する場合は `scripts/render.mjs` も更新してください。
+
+JSON の配列は記述順に掲載されます。経歴の年月は `YYYY-MM`、年だけの場合は `YYYY`、在職中の `end` は `null` です。誕生日は `YYYY/MM/DD` です。外部リンクは `https://` または `http://` の絶対 URL、アバター画像は `https://avatars.githubusercontent.com` の URL または `/assets/` 内のパスを使用します。画像の許可先は `_headers` の CSP と生成スクリプトで揃えています。HTML を JSON に書いてもタグとして実行されません。
+
+## チェック
+
+```sh
+npm run check
+```
+
+生成済み HTML とデータ・テンプレートが一致することを確認し、データ検証、HTML エスケープ、危険な URL の拒否、掲載情報の保持、ローカル配信のアクセス制限・HTTP ステータスをテストします。GitHub Actions でも Node.js 24 で同じチェックを実行します。
+
+ブラウザでは次の点を確認してください。
+
+- デスクトップと幅 375 px 前後の画面で、文字・カードが欠けず横スクロールが出ないこと。
+- キーボードの Tab キーでナビゲーション、リンク、テーマ切り替えを操作でき、フォーカス位置が分かること。
+- ライト・ダークの両テーマで文字が読みやすく、再読み込み後も選んだテーマが反映されること。
+- JavaScript を無効にして再読み込みしても、プロフィール、制作物、経歴、活動、学歴、居住歴、連絡先が表示されること。
+- 開発者ツールの「動きを減らす」設定でも操作でき、コンソールにエラーがないこと。
+- 存在しない URL を開くと 404 ページになり、ネットワークパネルでも HTTP 404 になること。
+
+## 構成
+
+| パス | 役割 |
+| --- | --- |
+| `data/site.json` | プロフィール、リンク、制作物、経歴などの編集元 |
+| `src/index.html` | ページの HTML テンプレート |
+| `index.html` | 公開用の生成済み HTML |
+| `404.html` | ページが見つからない場合の表示 |
+| `assets/` | CSS、JavaScript、画像 |
+| `scripts/render.mjs` | データ検証と HTML 生成 |
+| `scripts/build.mjs` | HTML の書き出し・生成差分の確認 |
+| `scripts/serve.mjs` | 公開ファイルだけを配信するローカルサーバー |
+| `tests/` | Node.js 標準テストランナーによる検証 |
+| `_headers`・`_redirects` | Cloudflare Pages のレスポンス設定 |
+| `manifest.webmanifest`・`robots.txt`・`sitemap.xml` | サイトのメタデータ |
+
+ローカルサーバーはトップページ、404 ページ、`assets/`、マニフェスト、robots、サイトマップだけを配信します。リポジトリのソースや設定ファイルにはアクセスできません。`_headers` のパスルールを読み込み、セキュリティヘッダーとキャッシュ設定も反映します。Cloudflare 固有のリダイレクト処理を再現するものではありません。
+
+## Cloudflare Pages への公開
+
+- この Git リポジトリを Cloudflare Pages に接続します。
+- フレームワークのプリセットは「なし」、ビルドコマンドは空欄にします。
+- 出力ディレクトリはリポジトリのルート `/` にします。
+- カスタムドメインを `063.jp` に設定します。
+
+公開するコミットに最新の `index.html` を含めてください。Cloudflare 側では Node.js やパッケージのインストールは必要ありません。ローカルサーバーの配信制限は開発用であり、Cloudflare にルートを公開した場合のアクセス制御にはなりません。

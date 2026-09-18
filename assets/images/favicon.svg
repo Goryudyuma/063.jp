@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>063.jp</title>
+  <rect width="64" height="64" rx="14" fill="#b7472d" />
+  <g fill="none" stroke="#f5f2eb" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="14" cy="32" rx="5" ry="12" />
+    <path d="M36 21c-7-3-11 5-11 13 0 7 2 10 6 10 4 0 6-3 6-7 0-5-6-9-12-3" />
+    <path d="M45 22c7-5 13 0 10 6-1 2-3 3-6 3 9 0 10 13 1 13-3 0-5-1-7-3" />
+  </g>
+</svg>

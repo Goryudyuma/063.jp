@@ -1,13 +1,12 @@
 {
-  "name": "063.jp Portfolio",
+  "name": "063.jp",
   "short_name": "063.jp",
+  "lang": "ja",
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#0b1020",
-  "theme_color": "#0f172a",
+  "display": "browser",
+  "background_color": "#f5f2eb",
+  "theme_color": "#f5f2eb",
   "icons": [
-    { "src": "/assets/images/favicon.png", "type": "image/png", "sizes": "32x32" },
-    { "src": "/assets/images/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+    { "src": "/assets/images/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" }
   ]
 }
-

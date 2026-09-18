@@ -3,172 +3,172 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>063.jp | Kei Matsumoto</title>
-    <meta
-      name="description"
-      content="松本圭威のポートフォリオ。サーバーサイド・インフラを軸に、Go、GitHub、Terraform、GitHub Actions などに取り組んでいます。"
-    />
+    <title>松本 圭威 / Kei Matsumoto — 063.jp</title>
+    <meta name="description" content="札幌市在住のフルリモート。年に3〜4回ほど東京に行きます。主戦場はサーバーサイド・インフラで、Go / GitHub / Elm / Terraform、ISUCON・AtCoderなどに取り組んでいます。" />
+    <meta name="theme-color" content="#f5f2eb" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="canonical" href="https://063.jp/" />
     <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/assets/images/favicon.png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="theme-color" content="#f5efe6" />
-
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="063.jp | Kei Matsumoto" />
-    <meta
-      property="og:description"
-      content="松本圭威のポートフォリオ。サーバーサイド・インフラ、OSS、競技プログラミング、ISUCON。"
-    />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="063.jp" />
+    <meta property="og:title" content="松本 圭威 / Kei Matsumoto — 063.jp" />
+    <meta property="og:description" content="札幌市在住のフルリモート。年に3〜4回ほど東京に行きます。主戦場はサーバーサイド・インフラで、Go / GitHub / Elm / Terraform、ISUCON・AtCoderなどに取り組んでいます。" />
     <meta property="og:url" content="https://063.jp/" />
-    <meta property="og:image" content="https://063.jp/assets/images/og-image.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="preload" href="/assets/css/styles.css?v=4" as="style" />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=4" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/6211370?v=4" />
+    <meta name="twitter:card" content="summary" />
+    <script src="/assets/js/theme.js"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script src="/assets/js/main.js" defer></script>
   </head>
   <body>
-    <a href="#main" class="skip-link">本文へスキップ</a>
-
+    <a class="skip-link" href="#main">本文へスキップ</a>
     <header class="site-header">
-      <nav class="topbar container" aria-label="メインナビゲーション">
-        <a class="brand" href="#hero">063.jp</a>
-        <div class="topbar-nav">
-          <a href="#projects">Works</a>
-          <a href="#experience">Career</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <button id="themeToggle" class="theme-toggle" aria-label="テーマ切り替え">Theme</button>
-      </nav>
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="063.jp トップへ"><span class="brand-dot" aria-hidden="true"></span>063.jp<span class="brand-caption">PERSONAL SITE</span></a>
+        <nav class="main-nav" aria-label="メインナビゲーション">
+          <a href="#work">Works</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact<span aria-hidden="true"> ↗</span></a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="ダークモードに切り替える" aria-pressed="false" hidden>
+          <svg class="moon-icon" aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" /></svg>
+          <svg class="sun-icon" aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></svg>
+        </button>
+      </div>
     </header>
 
-    <main id="main">
-      <section id="hero" class="hero section">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Personal portfolio</p>
-            <h1 id="name">Your Name</h1>
-            <p id="tagline" class="hero-tagline">やりたいこと、肩書きなど</p>
-            <p id="bio" class="hero-bio">自己紹介テキストがここに入ります。</p>
-            <div id="profile-meta" class="hero-meta"></div>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#projects">Projects</a>
-              <a class="btn btn-secondary" href="#contact">Contact</a>
-            </div>
-          </div>
-
-          <aside class="hero-aside">
-            <section class="profile-card" aria-label="プロフィール概要">
-              <div class="profile-card-head">
-                <img
-                  id="avatar"
-                  src="/assets/images/avatar.jpg"
-                  alt="プロフィール画像"
-                  width="160"
-                  height="160"
-                />
-                <div class="profile-card-copy">
-                  <p id="profile-kicker" class="profile-kicker">Based in Sapporo</p>
-                  <p id="profile-caption" class="profile-caption">
-                    Server-side / Infrastructure / OSS
-                  </p>
-                </div>
-              </div>
-              <ul id="links" class="link-pills" aria-label="リンク"></ul>
-            </section>
-
-            <section id="highlight-list" class="highlight-list" aria-label="ハイライト"></section>
-          </aside>
+    <main id="main" itemscope itemtype="https://schema.org/Person">
+      <section class="hero container" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> SOFTWARE ENGINEER, BASED IN SAPPORO</p>
+          <h1 id="hero-title">つくる。支える。<br /><span class="hero-serif" lang="en">Go further.</span></h1>
+          <div class="hero-person"><span class="person-name" itemprop="name">松本 圭威</span><span class="person-english" lang="en">Kei Matsumoto</span><span class="person-handle">@Goryudyuma</span></div>
+          <p class="hero-role" itemprop="jobTitle">証券エンジニア（サーバーサイド・インフラ）</p>
+          <p class="hero-bio" itemprop="description">札幌市在住のフルリモート。年に3〜4回ほど東京に行きます。主戦場はサーバーサイド・インフラで、Go / GitHub / Elm / Terraform、ISUCON・AtCoderなどに取り組んでいます。</p>
+          <a class="text-link hero-link" href="#work">つくっているもの<span aria-hidden="true">↓</span></a>
         </div>
+        <aside class="field-card" aria-label="プロフィールのひとこま">
+          <div class="field-top"><span class="mono">FIELD NOTES</span><span class="mono">NO. 063</span></div>
+          <div class="field-profile">
+            <img src="https://avatars.githubusercontent.com/u/6211370?v=4" width="88" height="88" alt="松本 圭威のプロフィール画像" fetchpriority="high" decoding="async" itemprop="image" />
+            <div><span class="field-handle">Goryudyuma</span><span class="field-small">Software engineer</span></div>
+          </div>
+          <div class="field-destination"><span class="mono">BASED IN</span><p lang="en">Sapporo<span>Hokkaido, Japan</span></p></div>
+          <div class="route" aria-hidden="true"><span class="route-station"></span><span class="route-line"></span><span class="route-station"></span><span class="route-line"></span><span class="route-station"></span><span class="route-line"></span><span class="route-station current"></span></div>
+          <div class="route-labels" aria-hidden="true"><span>HYOGO</span><span>NAGANO</span><span>TOKYO</span><span>SAPPORO</span></div>
+          <div class="field-bottom"><span>コードを書いて、<br />ときどき、遠くへ。</span><span class="field-mark" aria-hidden="true">↗</span></div>
+        </aside>
+      </section>
 
-        <div class="ticker" aria-hidden="true">
-          <div id="skill-marquee" class="ticker-track"></div>
+      <div class="intro-strip container"><span>Server-side &amp; Infrastructure</span><span class="strip-middle">Open source &amp; Community</span><a href="#beyond">And a little bit of adventure <span aria-hidden="true">↘</span></a></div>
+
+      <section class="section container" id="work" aria-labelledby="work-title">
+        <div class="section-heading"><div><p class="section-label"><span>01</span> SELECTED WORKS</p><h2 id="work-title">つくっているもの</h2></div><p class="section-intro">日々の開発から生まれたもの。<br />小さくつくって、使いながら育てています。</p></div>
+        <div class="project-list"><article class="project">
+  <span class="project-number" aria-hidden="true">01</span>
+  <div class="project-content">
+    <h3 class="project-title"><a href="https://github.com/dev-hato/actions-diff-pr-management" target="_blank" rel="noopener noreferrer">diff-pr-management</a></h3>
+    <p class="project-description">PRのブランチに対してフォーマッタ実行結果の差分を別PRとして管理するGitHub Actions。</p>
+    <ul class="project-links"><li><a href="https://github.com/dev-hato/actions-diff-pr-management" target="_blank" rel="noopener noreferrer">Repo<span aria-hidden="true">↗</span></a></li></ul>
+  </div>
+</article>
+<article class="project">
+  <span class="project-number" aria-hidden="true">02</span>
+  <div class="project-content">
+    <h3 class="project-title"><a href="https://063.jp/" target="_blank" rel="noopener noreferrer">063.jp</a></h3>
+    <p class="project-description">このポートフォリオ。ビルドなしの静的構成＋Cloudflare Pages。</p>
+    <ul class="project-links"><li><a href="https://github.com/Goryudyuma/063.jp" target="_blank" rel="noopener noreferrer">Repo<span aria-hidden="true">↗</span></a></li></ul>
+  </div>
+</article></div>
+      </section>
+
+      <section class="section container" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading"><div><p class="section-label"><span>02</span> EXPERIENCE</p><h2 id="experience-title">仕事と、これまで</h2></div><p class="section-intro">サービスの裏側を、確かに支える。<br />サーバーサイドとインフラを軸に。</p></div>
+        <ol class="experience-list"><li class="experience-item">
+  <div class="experience-date"><time datetime="2018-08">2018.08</time><span aria-hidden="true">—</span><span class="sr-only">から</span><time datetime="2021-05">2021.05</time></div>
+  <div class="experience-body">
+    <h3>SRE（HRMOS ATS）</h3>
+    <p class="experience-org"><a href="https://www.bizreach.co.jp/" target="_blank" rel="noopener noreferrer">株式会社ビズリーチ</a></p>
+    <p class="experience-summary">HRMOS ATSのSREチームに所属。信頼性向上・運用自動化・パフォーマンス改善などに従事。</p>
+  </div>
+</li>
+<li class="experience-item">
+  <div class="experience-date"><time datetime="2021-06">2021.06</time><span aria-hidden="true">—</span><span class="sr-only">から</span><span>現在</span></div>
+  <div class="experience-body">
+    <h3>証券エンジニア（サーバーサイド・インフラ）</h3>
+    <p class="experience-org"><a href="https://finatext.com/" target="_blank" rel="noopener noreferrer">株式会社Finatext</a></p>
+    <p class="experience-summary">フルリモート（札幌）。証券領域のサーバーサイドおよびインフラを担当。</p>
+  </div>
+</li>
+<li class="experience-item">
+  <div class="experience-date"><time datetime="2021">2021</time><span aria-hidden="true">—</span><span class="sr-only">から</span><span>現在</span></div>
+  <div class="experience-body">
+    <h3>OSS コントリビュータ</h3>
+    <p class="experience-org"><a href="https://github.com/dev-hato" target="_blank" rel="noopener noreferrer">dev-hato</a></p>
+    <p class="experience-summary">GitHub Actions『diff-pr-management』の開発・保守（TypeScript）。PRのフォーマッタ実行結果を差分PRとして自動生成・管理。</p>
+  </div>
+</li></ol>
+        <div class="tools-row"><h3>よく使う技術・取り組み</h3><ul class="skill-list"><li class="skill">Golang</li>
+<li class="skill">GitHub</li>
+<li class="skill">Elm</li>
+<li class="skill">ISUCON</li>
+<li class="skill">AtCoder</li>
+<li class="skill">GitHub Actions</li>
+<li class="skill">Terraform</li></ul></div>
+      </section>
+
+      <section class="beyond-section" id="beyond" aria-labelledby="beyond-title">
+        <div class="container beyond-grid">
+          <div class="beyond-copy"><p class="section-label"><span>03</span> BEYOND THE CODE</p><h2 id="beyond-title">コードの外にも、<br />行きたい場所がある。</h2><p>競技プログラミングや技術イベント。<br />そして、鉄道に乗って知らない街へ。<br />仕事のとなりにある、好きなことの記録です。</p><div class="beyond-symbol" aria-hidden="true"><span></span><span></span><span></span><span></span></div></div>
+          <ul class="activity-list"><li class="activity-item"><span class="activity-name">JR完乗</span><span class="activity-note">乗りつぶしオンライン基準</span></li>
+<li class="activity-item"><span class="activity-name">kstm</span><span class="activity-note">信州大学のサークル</span></li>
+<li class="activity-item"><span class="activity-name"><a href="https://isucon.net/" target="_blank" rel="noopener noreferrer">ISUCON5</a></span></li>
+<li class="activity-item"><span class="activity-name"><a href="https://isucon.net/" target="_blank" rel="noopener noreferrer">ISUCON6</a></span><span class="activity-note">学生一位！</span></li>
+<li class="activity-item"><span class="activity-name"><a href="https://isucon.net/" target="_blank" rel="noopener noreferrer">ISUCON7</a></span></li>
+<li class="activity-item"><span class="activity-name">CODE FESTIVAL 2015</span></li>
+<li class="activity-item"><span class="activity-name">CODE FESTIVAL 2016</span></li>
+<li class="activity-item"><span class="activity-name"><a href="https://www.security-camp.or.jp/camp/" target="_blank" rel="noopener noreferrer">セキュリティ・キャンプ 2016</a></span><span class="activity-note">参加</span></li>
+<li class="activity-item"><span class="activity-name"><a href="https://icttoracon.net/about-ictsc" target="_blank" rel="noopener noreferrer">ICTSC6</a></span><span class="activity-note">三位</span></li>
+<li class="activity-item"><span class="activity-name"><a href="https://icttoracon.net/about-ictsc" target="_blank" rel="noopener noreferrer">ICTSC7</a></span></li>
+<li class="activity-item"><span class="activity-name"><a href="https://www.ipa.go.jp/shiken/kubun/ap.html" target="_blank" rel="noopener noreferrer">AP 2016 秋</a></span><span class="activity-note">応用情報</span></li></ul>
         </div>
       </section>
 
-      <section id="projects" class="section container" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="eyebrow">Selected works</p>
-          <h2 id="projects-title">公開しているものと、継続して触っているもの</h2>
+      <section class="section container" id="about" aria-labelledby="about-title">
+        <div class="section-heading"><div><p class="section-label"><span>04</span> A LITTLE MORE</p><h2 id="about-title">もう少し、自己紹介</h2></div><div class="about-meta"><p>札幌市在住</p><p>1994.06.03 生まれ</p></div></div>
+        <div class="about-grid">
+          <div class="online-section"><h3 class="detail-heading">オンラインで<span class="mono">ELSEWHERE</span></h3><ul class="social-list"><li><a href="https://github.com/Goryudyuma" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a></li>
+<li><a href="https://x.com/Goryudyuma" target="_blank" rel="noopener noreferrer"><span>X(Twitter)</span><span aria-hidden="true">↗</span></a></li>
+<li><a href="https://goryudyuma.hatenablog.jp/" target="_blank" rel="noopener noreferrer"><span>Blog</span><span aria-hidden="true">↗</span></a></li>
+<li><a href="https://www.facebook.com/kei.matsumoto.965/" target="_blank" rel="noopener noreferrer"><span>Facebook</span><span aria-hidden="true">↗</span></a></li>
+<li><a href="https://atcoder.jp/users/goryudyuma" target="_blank" rel="noopener noreferrer"><span>AtCoder</span><span aria-hidden="true">↗</span></a></li></ul></div>
+          <div class="personal-history">
+            <details class="history-details"><summary><span>学んできた場所<small class="mono">EDUCATION</small></span><span class="disclosure-icon" aria-hidden="true"></span></summary><ul class="detail-list"><li class="detail-item"><span class="detail-title"><a href="https://www.city.kakogawa.lg.jp/soshikikarasagasu/kyouiku/gakoen/kakogawachugakkoku/kyuurishogakko/gakkojoho/1414501215995.html" target="_blank" rel="noopener noreferrer">鳩里小学校</a></span><span class="detail-note">『きゅうり』って読みます笑</span></li>
+<li class="detail-item"><span class="detail-title"><a href="https://www.hakuryo.ed.jp/" target="_blank" rel="noopener noreferrer">白陵中学</a></span></li>
+<li class="detail-item"><span class="detail-title"><a href="https://www.hakuryo.ed.jp/" target="_blank" rel="noopener noreferrer">白陵高校</a></span><span class="detail-note">1年の終わりで中退</span></li>
+<li class="detail-item"><span class="detail-title"><a href="https://www.kobeseminar.ac.jp/" target="_blank" rel="noopener noreferrer">神戸セミナー</a></span><span class="detail-note">予備校／高認取得</span></li>
+<li class="detail-item"><span class="detail-title"><a href="https://www.shinshu-u.ac.jp/" target="_blank" rel="noopener noreferrer">信州大学</a></span><span class="detail-note">情報工学科</span></li>
+<li class="detail-item"><span class="detail-title"><a href="https://www.shinshu-u.ac.jp/graduate/research/" target="_blank" rel="noopener noreferrer">信州大学大学院</a></span><span class="detail-note">2年の9月末中退</span></li></ul></details>
+            <details class="history-details"><summary><span>住んできた場所<small class="mono">PLACES I'VE CALLED HOME</small></span><span class="disclosure-icon" aria-hidden="true"></span></summary><ol class="place-list"><li class="place-item"><span class="place-name">兵庫県多可町</span><span class="place-note">1歳まで</span></li>
+<li class="place-item"><span class="place-name">兵庫県加東市</span><span class="place-note">4,5歳くらいまで</span></li>
+<li class="place-item"><span class="place-name">兵庫県加古川市</span><span class="place-note">18歳くらいまで</span></li>
+<li class="place-item"><span class="place-name">長野県松本市</span><span class="place-note">学部1年の間</span></li>
+<li class="place-item"><span class="place-name">長野県長野市</span><span class="place-note">学部2年から修士2年の7月まで</span></li>
+<li class="place-item"><span class="place-name">東京都世田谷区</span><span class="place-note">4年半ほど住んだ</span></li>
+<li class="place-item"><span class="place-name">北海道札幌市</span><span class="place-note">現在在住</span></li></ol></details>
+            <p class="history-note">兵庫から長野、東京を経て、いまは札幌に。</p>
+          </div>
         </div>
-        <div id="project-list" class="project-grid"></div>
       </section>
 
-      <section id="experience" class="section container" aria-labelledby="experience-title">
-        <div class="section-heading">
-          <p class="eyebrow">Career</p>
-          <h2 id="experience-title">仕事として積み上げてきたこと</h2>
-        </div>
-        <ul id="experience-list" class="career-list"></ul>
-      </section>
-
-      <section
-        id="profile-details"
-        class="section container story-grid"
-        aria-label="補足プロフィール"
-      >
-        <section class="info-panel" aria-labelledby="activities-title">
-          <div class="section-heading compact">
-            <p class="eyebrow">Activities</p>
-            <h3 id="activities-title">競技・イベント・寄り道</h3>
-          </div>
-          <ul id="activities-list" class="stacked-list"></ul>
-        </section>
-
-        <section class="info-panel" aria-labelledby="education-title">
-          <div class="section-heading compact">
-            <p class="eyebrow">Education</p>
-            <h3 id="education-title">学歴</h3>
-          </div>
-          <ul id="education-list" class="stacked-list"></ul>
-        </section>
-
-        <section class="info-panel" aria-labelledby="residences-title">
-          <div class="section-heading compact">
-            <p class="eyebrow">Residences</p>
-            <h3 id="residences-title">住んできた場所</h3>
-          </div>
-          <ul id="residences-list" class="stacked-list"></ul>
-        </section>
-      </section>
-
-      <section id="skills" class="section container" aria-labelledby="skills-title">
-        <div class="section-heading">
-          <p class="eyebrow">Skills</p>
-          <h2 id="skills-title">普段よく使うもの</h2>
-        </div>
-        <ul id="skills-list" class="skill-cloud"></ul>
-      </section>
-
-      <section id="contact" class="section container" aria-labelledby="contact-title">
-        <div class="contact-panel">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">連絡先</h2>
-            <p class="contact-copy">
-              お仕事の相談、技術の話、カジュアルな情報交換まで。メールでどうぞ。
-            </p>
-          </div>
-          <a id="email" class="btn btn-primary" href="#">メール</a>
-        </div>
+      <section class="contact-section container" id="contact" aria-labelledby="contact-title">
+        <div><p class="section-label"><span>05</span> SAY HELLO</p><h2 id="contact-title">話してみませんか。</h2><p>お仕事の相談も、技術や旅の話も。<br />メールから、お気軽にどうぞ。</p></div>
+        <a class="contact-link" href="mailto:k@063.jp" itemprop="email">k@063.jp<span aria-hidden="true">↗</span></a>
       </section>
     </main>
 
-    <footer class="site-footer container">
-      <small>
-        © <span id="copyright-year"></span> <span id="copyright-name">Your Name</span>.
-      </small>
-    </footer>
-
-    <script src="/assets/js/main.js?v=4" defer></script>
+    <footer class="site-footer container"><a class="footer-brand" href="#top">063.jp</a><small>© <span data-year>2026</span> Kei Matsumoto</small><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>
   </body>
 </html>

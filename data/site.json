@@ -1,18 +1,36 @@
 {
   "profile": {
     "name": "松本 圭威 (Kei Matsumoto / Goryudyuma)",
-    "tagline": "証券エンジニア（サーバーサイド・インフラ）", 
-    "bio": "札幌市在住のフルリモート。年に3〜4回ほど東京に行きます。主戦場はサーバーサイド・インフラで、Go / GitHub / Elm / Terraform、ISUCON・AtCoderなどに取り組んでいます。", 
+    "tagline": "証券エンジニア（サーバーサイド・インフラ）",
+    "bio": "札幌市在住のフルリモート。年に3〜4回ほど東京に行きます。主戦場はサーバーサイド・インフラで、Go / GitHub / Elm / Terraform、ISUCON・AtCoderなどに取り組んでいます。",
     "avatar": "https://avatars.githubusercontent.com/u/6211370?v=4",
     "location": "札幌市",
-    "birthday": "1994/06/03"
+    "birthday": "1994/06/03",
+    "displayName": "松本 圭威",
+    "englishName": "Kei Matsumoto",
+    "handle": "Goryudyuma"
   },
   "links": [
-    { "label": "GitHub", "url": "https://github.com/Goryudyuma" },
-    { "label": "X(Twitter)", "url": "https://x.com/Goryudyuma" },
-    { "label": "Blog", "url": "https://goryudyuma.hatenablog.jp/" },
-    { "label": "Facebook", "url": "https://www.facebook.com/kei.matsumoto.965/" },
-    { "label": "AtCoder", "url": "https://atcoder.jp/users/goryudyuma" }
+    {
+      "label": "GitHub",
+      "url": "https://github.com/Goryudyuma"
+    },
+    {
+      "label": "X(Twitter)",
+      "url": "https://x.com/Goryudyuma"
+    },
+    {
+      "label": "Blog",
+      "url": "https://goryudyuma.hatenablog.jp/"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/kei.matsumoto.965/"
+    },
+    {
+      "label": "AtCoder",
+      "url": "https://atcoder.jp/users/goryudyuma"
+    }
   ],
   "projects": [
     {
@@ -20,7 +38,10 @@
       "url": "https://github.com/dev-hato/actions-diff-pr-management",
       "description": "PRのブランチに対してフォーマッタ実行結果の差分を別PRとして管理するGitHub Actions。",
       "links": [
-        { "label": "Repo", "url": "https://github.com/dev-hato/actions-diff-pr-management" }
+        {
+          "label": "Repo",
+          "url": "https://github.com/dev-hato/actions-diff-pr-management"
+        }
       ]
     },
     {
@@ -28,7 +49,10 @@
       "url": "https://063.jp/",
       "description": "このポートフォリオ。ビルドなしの静的構成＋Cloudflare Pages。",
       "links": [
-        { "label": "Repo", "url": "https://github.com/Goryudyuma/063.jp" }
+        {
+          "label": "Repo",
+          "url": "https://github.com/Goryudyuma/063.jp"
+        }
       ]
     }
   ],
@@ -59,34 +83,113 @@
     }
   ],
   "activities": [
-    { "title": "JR完乗", "note": "乗りつぶしオンライン基準" },
-    { "title": "kstm", "note": "信州大学のサークル" },
-    { "title": "ISUCON5", "url": "https://isucon.net/" },
-    { "title": "ISUCON6", "note": "学生一位！", "url": "https://isucon.net/" },
-    { "title": "ISUCON7", "url": "https://isucon.net/" },
-    { "title": "CODE FESTIVAL 2015" },
-    { "title": "CODE FESTIVAL 2016" },
-    { "title": "セキュリティ・キャンプ 2016", "note": "参加", "url": "https://www.security-camp.or.jp/camp/" },
-    { "title": "ICTSC6", "note": "三位", "url": "https://icttoracon.net/about-ictsc" },
-    { "title": "ICTSC7", "url": "https://icttoracon.net/about-ictsc" },
-    { "title": "AP 2016 秋", "note": "応用情報", "url": "https://www.ipa.go.jp/shiken/kubun/ap.html" }
+    {
+      "title": "JR完乗",
+      "note": "乗りつぶしオンライン基準"
+    },
+    {
+      "title": "kstm",
+      "note": "信州大学のサークル"
+    },
+    {
+      "title": "ISUCON5",
+      "url": "https://isucon.net/"
+    },
+    {
+      "title": "ISUCON6",
+      "note": "学生一位！",
+      "url": "https://isucon.net/"
+    },
+    {
+      "title": "ISUCON7",
+      "url": "https://isucon.net/"
+    },
+    {
+      "title": "CODE FESTIVAL 2015"
+    },
+    {
+      "title": "CODE FESTIVAL 2016"
+    },
+    {
+      "title": "セキュリティ・キャンプ 2016",
+      "note": "参加",
+      "url": "https://www.security-camp.or.jp/camp/"
+    },
+    {
+      "title": "ICTSC6",
+      "note": "三位",
+      "url": "https://icttoracon.net/about-ictsc"
+    },
+    {
+      "title": "ICTSC7",
+      "url": "https://icttoracon.net/about-ictsc"
+    },
+    {
+      "title": "AP 2016 秋",
+      "note": "応用情報",
+      "url": "https://www.ipa.go.jp/shiken/kubun/ap.html"
+    }
   ],
   "education": [
-    { "school": "鳩里小学校", "note": "『きゅうり』って読みます笑", "url": "https://www.city.kakogawa.lg.jp/soshikikarasagasu/kyouiku/gakoen/kakogawachugakkoku/kyuurishogakko/gakkojoho/1414501215995.html" },
-    { "school": "白陵中学", "url": "https://www.hakuryo.ed.jp/" },
-    { "school": "白陵高校", "note": "1年の終わりで中退", "url": "https://www.hakuryo.ed.jp/" },
-    { "school": "神戸セミナー", "note": "予備校／高認取得", "url": "https://www.kobeseminar.ac.jp/" },
-    { "school": "信州大学", "note": "情報工学科", "url": "https://www.shinshu-u.ac.jp/" },
-    { "school": "信州大学大学院", "note": "2年の9月末中退", "url": "https://www.shinshu-u.ac.jp/graduate/research/" }
+    {
+      "school": "鳩里小学校",
+      "note": "『きゅうり』って読みます笑",
+      "url": "https://www.city.kakogawa.lg.jp/soshikikarasagasu/kyouiku/gakoen/kakogawachugakkoku/kyuurishogakko/gakkojoho/1414501215995.html"
+    },
+    {
+      "school": "白陵中学",
+      "url": "https://www.hakuryo.ed.jp/"
+    },
+    {
+      "school": "白陵高校",
+      "note": "1年の終わりで中退",
+      "url": "https://www.hakuryo.ed.jp/"
+    },
+    {
+      "school": "神戸セミナー",
+      "note": "予備校／高認取得",
+      "url": "https://www.kobeseminar.ac.jp/"
+    },
+    {
+      "school": "信州大学",
+      "note": "情報工学科",
+      "url": "https://www.shinshu-u.ac.jp/"
+    },
+    {
+      "school": "信州大学大学院",
+      "note": "2年の9月末中退",
+      "url": "https://www.shinshu-u.ac.jp/graduate/research/"
+    }
   ],
   "residences": [
-    { "place": "兵庫県多可町", "note": "1歳まで" },
-    { "place": "兵庫県加東市", "note": "4,5歳くらいまで" },
-    { "place": "兵庫県加古川市", "note": "18歳くらいまで" },
-    { "place": "長野県松本市", "note": "学部1年の間" },
-    { "place": "長野県長野市", "note": "学部2年から修士2年の7月まで" },
-    { "place": "東京都世田谷区", "note": "4年半ほど住んだ" },
-    { "place": "北海道札幌市", "note": "現在在住" }
+    {
+      "place": "兵庫県多可町",
+      "note": "1歳まで"
+    },
+    {
+      "place": "兵庫県加東市",
+      "note": "4,5歳くらいまで"
+    },
+    {
+      "place": "兵庫県加古川市",
+      "note": "18歳くらいまで"
+    },
+    {
+      "place": "長野県松本市",
+      "note": "学部1年の間"
+    },
+    {
+      "place": "長野県長野市",
+      "note": "学部2年から修士2年の7月まで"
+    },
+    {
+      "place": "東京都世田谷区",
+      "note": "4年半ほど住んだ"
+    },
+    {
+      "place": "北海道札幌市",
+      "note": "現在在住"
+    }
   ],
   "skills": [
     "Golang",
