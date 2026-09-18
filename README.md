@@ -2,7 +2,7 @@
 
 松本 圭威（Kei Matsumoto / Goryudyuma）のポートフォリオサイトです。HTML・CSS・JavaScript と Node.js の標準機能だけで構成しています。フレームワーク、外部パッケージ、`npm install` は不要です。
 
-掲載内容から生成した `index.html` をリポジトリに含めているため、公開時のビルドは不要です。プロフィールや経歴は最初から HTML に含まれ、JavaScript を無効にしたブラウザでも読めます。
+生成済みの `index.html`・`404.html` をリポジトリに含めているため、公開時のビルドは不要です。プロフィールや経歴は最初から HTML に含まれ、JavaScript を無効にしたブラウザでも読めます。
 
 ## ローカルで開く
 
@@ -14,16 +14,16 @@ npm run dev
 
 起動時に HTML を生成し、<http://127.0.0.1:8080> でプレビューします。ポートを変える場合は `PORT=8081 npm run dev` を使用します。サーバーは自分の端末だけから接続できるようにしています。
 
-CSS・JavaScript を編集した後はブラウザを更新してください。掲載内容やテンプレートを編集した後は、別のターミナルで `npm run build` を実行してから更新するか、プレビューサーバーを再起動してください。ファイルの自動監視は行いません。
+掲載内容・テンプレート・CSS・JavaScript を編集した後は、別のターミナルで `npm run build` を実行してからブラウザを更新するか、プレビューサーバーを再起動してください。ファイルの自動監視は行いません。
 
 ## 内容・デザインの編集
 
-1. 掲載内容は `data/site.json`、ページ構造は `src/index.html`、見た目は `assets/css/styles.css` を編集します。
-2. `npm run build` を実行して `index.html` を生成します。
+1. 掲載内容は `data/site.json`、ページ構造は `src/index.html`・`src/404.html`、見た目は `assets/css/styles.css` を編集します。
+2. `npm run build` を実行して `index.html`・`404.html` を生成します。
 3. `npm run check` とブラウザで確認します。
-4. 編集したファイルと生成済みの `index.html` を一緒にコミットします。
+4. 編集したファイルと生成済みの HTML を一緒にコミットします。
 
-`index.html` の直接編集は次の生成で上書きされます。`src/index.html` の `{{displayName}}` のようなトークンが、検証済み・エスケープ済みの内容に置き換わります。新しいデータ項目やトークンを追加する場合は `scripts/render.mjs` も更新してください。
+`index.html`・`404.html` の直接編集は次の生成で上書きされます。`src/index.html` の `{{displayName}}` のようなトークンが、検証済み・エスケープ済みの内容に置き換わります。新しいデータ項目やトークンを追加する場合は `scripts/render.mjs` も更新してください。
 
 JSON の配列は記述順に掲載されます。経歴の年月は `YYYY-MM`、年だけの場合は `YYYY`、在職中の `end` は `null` です。誕生日は `YYYY/MM/DD` です。外部リンクは `https://` または `http://` の絶対 URL、アバター画像は `https://avatars.githubusercontent.com` の URL または `/assets/` 内のパスを使用します。画像の許可先は `_headers` の CSP と生成スクリプトで揃えています。HTML を JSON に書いてもタグとして実行されません。
 
@@ -49,9 +49,9 @@ npm run check
 | パス | 役割 |
 | --- | --- |
 | `data/site.json` | プロフィール、リンク、制作物、経歴などの編集元 |
-| `src/index.html` | ページの HTML テンプレート |
+| `src/index.html`・`src/404.html` | トップ・404 の HTML テンプレート |
 | `index.html` | 公開用の生成済み HTML |
-| `404.html` | ページが見つからない場合の表示 |
+| `404.html` | 公開用の生成済み 404 ページ |
 | `assets/` | CSS、JavaScript、画像 |
 | `scripts/render.mjs` | データ検証と HTML 生成 |
 | `scripts/build.mjs` | HTML の書き出し・生成差分の確認 |
@@ -69,4 +69,10 @@ npm run check
 - 出力ディレクトリはリポジトリのルート `/` にします。
 - カスタムドメインを `063.jp` に設定します。
 
-公開するコミットに最新の `index.html` を含めてください。Cloudflare 側では Node.js やパッケージのインストールは必要ありません。ローカルサーバーの配信制限は開発用であり、Cloudflare にルートを公開した場合のアクセス制御にはなりません。
+公開するコミットに最新の `index.html`・`404.html` を含めてください。Cloudflare 側では Node.js やパッケージのインストールは必要ありません。ローカルサーバーの配信制限は開発用であり、Cloudflare にルートを公開した場合のアクセス制御にはなりません。
+
+## Cloudflare での配信
+
+CSS・JavaScript の参照 URL には、生成時にファイル内容から計算したバージョンを付けます。Cloudflare のブラウザキャッシュ設定が応答ヘッダーより優先されても、内容が変われば別の URL で取得されます。CSS・JavaScript の編集後も `npm run build` を実行し、生成 HTML をコミットしてください。
+
+メールリンクは `<!--email_off-->` コメントで囲み、Cloudflare のメール難読化の対象から外しています。JavaScript を無効にしたブラウザでも連絡先を使えるようにするためです。このコメントは残してください。

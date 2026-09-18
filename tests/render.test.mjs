@@ -107,6 +107,7 @@ test('build check catches stale output without replacing it', async (context) =>
   await Promise.all([mkdir(join(root, 'src')), mkdir(join(root, 'data'))]);
   await Promise.all([
     writeFile(join(root, 'src/index.html'), '<h1>{{displayName}}</h1>\n'),
+    writeFile(join(root, 'src/404.html'), '<h1>Not found</h1>\n'),
     writeFile(join(root, 'data/site.json'), JSON.stringify(site)),
   ]);
   await build({ root });
@@ -114,6 +115,57 @@ test('build check catches stale output without replacing it', async (context) =>
   await writeFile(join(root, 'index.html'), 'stale');
   await assert.rejects(build({ root, check: true }), /out of date/u);
   assert.equal(await readFile(join(root, 'index.html'), 'utf8'), 'stale');
+  await build({ root });
+  await writeFile(join(root, '404.html'), 'stale 404');
+  await assert.rejects(build({ root, check: true }), /404\.html is out of date/u);
+  assert.equal(await readFile(join(root, '404.html'), 'utf8'), 'stale 404');
+});
+
+test('asset versions stay stable until content changes, then invalidate both pages', async (context) => {
+  const root = await mkdtemp(join(tmpdir(), '063-assets-'));
+  context.after(() => rm(root, { recursive: true, force: true }));
+  await Promise.all(['src', 'data', 'assets'].map((directory) => mkdir(join(root, directory))));
+  const template = '<link rel="stylesheet" href="/assets/style.css?mode=screen&amp;v=old#styles">\n<script src="/assets/app.js"></script>\n<link rel="icon" href="/assets/icon.svg">\n<script src="https://example.com/external.js"></script>\n';
+  await Promise.all([
+    writeFile(join(root, 'src/index.html'), template + '<h1>{{displayName}}</h1>'),
+    writeFile(join(root, 'src/404.html'), template + '<h1>Not found</h1>'),
+    writeFile(join(root, 'data/site.json'), JSON.stringify(site)),
+    writeFile(join(root, 'assets/style.css'), 'body { color: black; }'),
+    writeFile(join(root, 'assets/app.js'), 'console.log("ready");'),
+  ]);
+  const page = (name) => readFile(join(root, name), 'utf8');
+  const assetUrl = (html, name) => new URL(html.match(new RegExp(`(?:href|src)="(/assets/${name}[^\"]*)"`, 'u'))[1].replaceAll('&amp;', '&'), 'https://063.jp');
+  await build({ root });
+  const first = await page('index.html');
+  const firstNotFound = await page('404.html');
+  const originalStyle = assetUrl(first, 'style.css');
+  assert.match(originalStyle.searchParams.get('v'), /^[0-9a-f]{12}$/u);
+  assert.equal(originalStyle.searchParams.getAll('v').length, 1);
+  assert.equal(originalStyle.searchParams.get('mode'), 'screen');
+  assert.equal(originalStyle.hash, '#styles');
+  assert.equal(assetUrl(firstNotFound, 'style.css').href, originalStyle.href);
+  assert.ok(first.includes('href="/assets/icon.svg"'));
+  assert.ok(first.includes('src="https://example.com/external.js"'));
+  await build({ root });
+  assert.equal(await page('index.html'), first);
+  assert.equal(await page('404.html'), firstNotFound);
+  await build({ root, check: true });
+
+  await writeFile(join(root, 'assets/style.css'), 'body { color: blue; }');
+  await assert.rejects(build({ root, check: true }), /index\.html, 404\.html are out of date/u);
+  assert.equal(await page('index.html'), first);
+  assert.equal(await page('404.html'), firstNotFound);
+  await build({ root });
+  const updated = await page('index.html');
+  assert.notEqual(assetUrl(updated, 'style.css').href, originalStyle.href);
+  assert.equal(assetUrl(await page('404.html'), 'style.css').href, assetUrl(updated, 'style.css').href);
+  assert.equal(assetUrl(updated, 'app.js').href, assetUrl(first, 'app.js').href);
+
+  await writeFile(join(root, 'assets/app.js'), 'console.log("updated");');
+  await assert.rejects(build({ root, check: true }), /out of date/u);
+  await build({ root });
+  assert.notEqual(assetUrl(await page('index.html'), 'app.js').href, assetUrl(first, 'app.js').href);
+  await build({ root, check: true });
 });
 
 function fetchPath(port, path, method = 'GET') {

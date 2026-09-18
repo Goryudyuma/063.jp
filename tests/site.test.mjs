@@ -4,7 +4,7 @@ import test from 'node:test';
 
 const siteOrigin = 'https://063.jp';
 const root = new URL('../', import.meta.url);
-const documentPaths = ['src/index.html', 'index.html', '404.html'];
+const documentPaths = ['src/index.html', 'src/404.html', 'index.html', '404.html'];
 const documents = await Promise.all(documentPaths.map(async (path) => ({
   path,
   html: await readFile(new URL(path, root), 'utf8'),
@@ -38,7 +38,7 @@ function tags(html) {
 }
 
 function baseUrl(path) {
-  return new URL(path === 'src/index.html' ? '/index.html' : `/${path}`, siteOrigin);
+  return new URL(`/${path.replace(/^src\//u, '')}`, siteOrigin);
 }
 
 async function existingLocalReference(reference, owner) {
@@ -75,6 +75,18 @@ test('HTML, CSS, and manifest local asset references resolve to real files', asy
   await existingLocalReference(manifest.start_url, 'manifest.webmanifest');
 });
 
+test('both published pages use versioned local script and stylesheet URLs', () => {
+  for (const document of documents.filter(({ path }) => !path.startsWith('src/'))) {
+    for (const tag of tags(document.html)) {
+      const reference = tag.name === 'script' ? tag.attrs.get('src') : tag.name === 'link' && tag.attrs.get('rel') === 'stylesheet' ? tag.attrs.get('href') : null;
+      if (!reference?.startsWith('/assets/')) continue;
+      const url = new URL(reference, siteOrigin);
+      assert.match(url.searchParams.get('v') || '', /^[0-9a-f]{12}$/u, `${document.path}: missing asset version for ${url.pathname}`);
+      assert.equal(url.searchParams.getAll('v').length, 1, `${document.path}: duplicate asset versions`);
+    }
+  }
+});
+
 test('documents have unique IDs and valid local anchor and accessibility references', () => {
   for (const document of documents) {
     const elements = tags(document.html);
@@ -103,7 +115,7 @@ function singleTag(elements, name, attribute, value, owner) {
 }
 
 test('published metadata, social sharing, manifest, and 404 indexing settings agree', () => {
-  for (const document of documents.filter(({ path }) => path !== 'src/index.html')) {
+  for (const document of documents.filter(({ path }) => !path.startsWith('src/'))) {
     const elements = tags(document.html);
     singleTag(elements, 'html', 'lang', 'ja', document.path);
     singleTag(elements, 'meta', 'charset', 'utf-8', document.path);
@@ -130,6 +142,14 @@ test('published metadata, social sharing, manifest, and 404 indexing settings ag
   assert.equal(manifest.theme_color, singleTag(elements, 'meta', 'name', 'theme-color', home.path).get('content'));
   const notFound = documents.find(({ path }) => path === '404.html');
   assert.ok(singleTag(tags(notFound.html), 'meta', 'name', 'robots', notFound.path).get('content').split(/[,\s]+/u).includes('noindex'));
+});
+
+test('contact mailto links remain inside the Cloudflare email obfuscation opt-out', () => {
+  for (const document of documents.filter(({ path }) => path.endsWith('index.html'))) {
+    const optOuts = [...document.html.matchAll(/<!--email_off-->([\s\S]*?)<!--\/email_off-->/gu)];
+    const expected = `mailto:${document.path.startsWith('src/') ? '{{email}}' : data.contact.email}`;
+    assert.ok(optOuts.some((match) => tags(match[1]).some((tag) => tag.name === 'a' && tag.attrs.get('href') === expected)), `${document.path}: mailto must remain inside the email_off comments`);
+  }
 });
 
 test('HTML resources comply with CSP and need no inline script, handlers, or styles', async () => {
