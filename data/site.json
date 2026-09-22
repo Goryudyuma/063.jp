@@ -60,6 +60,21 @@
       ]
     },
     {
+      "title": "CIDR Studio",
+      "url": "https://cidr.063.jp/",
+      "description": "IPv4・IPv6のアドレス範囲を追加・除外し、最小本数のCIDRにまとめるツール。範囲を図で確認でき、計算はブラウザ内で完結します。",
+      "links": [
+        {
+          "label": "Site",
+          "url": "https://cidr.063.jp/"
+        },
+        {
+          "label": "Repo",
+          "url": "https://github.com/Goryudyuma/cidr"
+        }
+      ]
+    },
+    {
       "title": "063.jp",
       "url": "https://063.jp/",
       "description": "このポートフォリオ。ビルドなしの静的構成＋Cloudflare Pages。",
